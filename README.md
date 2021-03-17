@@ -8,6 +8,13 @@ The routes don't work if the channel is not present in the namespace
 
 `oc create channel.yaml`
 
+# Run the knative logger
+
+`kamel run --name loggerk LoggerK.java --trait openapi.enabled=true`
+
+Check the logs
+`kamel log loggerk`
+
 # Run the integration Receiver
 
 `kamel run --name receiverk ReceiverK.java --open-api openapi.yaml --trait openapi.enabled=true`
@@ -22,14 +29,8 @@ Send a message on the channel:
 
 `curl -i $URL/receiver/aMessage`
 
-# Run the knative logger
+eg:
 
-`kamel run --name loggerk LoggerK.java --trait openapi.enabled=true`
+`curl -i $URL/receiver/Hello`
 
-
-
-
-
-
-
-
+And check the log output from loggerk
