@@ -1,0 +1,64 @@
+openapi: 3.0.2
+info:
+    title: Knative Adapter
+    version: 1.0.0
+    description: Http to Knative bridge
+paths:
+    /:
+        get:
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+                            examples:
+                                status:
+                                    value:
+                                        status: UP
+            operationId: root
+    '/receiver/{message}':
+        get:
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Reply'
+                            examples:
+                                reply:
+                                    value:
+                                        message: sent
+                    description: working
+            operationId: receiver
+        parameters:
+            -
+                name: isbn
+                schema:
+                    type: string
+                in: path
+                required: true
+components:
+    schemas:        
+        Status:
+            description: ''
+            required:
+                - status
+            type: object
+            properties:
+                status:
+                    description: ''
+                    type: string
+            example:
+                status: some text
+        Reply:
+            description: ''
+            required:
+                - message
+            type: object
+            properties:
+                message:
+                    description: ''
+                    type: string
+            example:
+                message: some text
