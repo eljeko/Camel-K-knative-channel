@@ -13,6 +13,7 @@ The routes don't work if the channel is not present in the namespace
 `kamel run --name loggerk LoggerK.java --trait openapi.enabled=true`
 
 Check the logs
+
 `kamel log loggerk`
 
 # Run the integration Receiver
